@@ -1,4 +1,6 @@
 package Characters.Archers;
-public interface Archer {
+import Characters.Character;
+
+public abstract class Archer extends Character {
 
 }

@@ -1,3 +1,5 @@
 package Characters.Mages;
-public interface Mage {
+import Characters.Character;
+
+public abstract class Mage extends Character {
 }

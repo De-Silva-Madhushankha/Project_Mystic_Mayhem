@@ -1,3 +1,5 @@
 package Characters.Healers;
-public interface Healer {
+import Characters.Character;
+
+public abstract class Healer extends Character {
 }

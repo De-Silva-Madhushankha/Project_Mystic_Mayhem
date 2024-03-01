@@ -1,3 +1,5 @@
 package Characters.MythicalCreatures;
-public interface MythicalCreature {
+import Characters.Character;
+
+public abstract class MythicalCreature extends Character {
 }

@@ -1,16 +1,21 @@
 package Equipment.Armour;
-import Equipment.Equipment;
+import Characters.Character;
 
-public class Chainmail implements Armour, Equipment {
+public class Chainmail extends Armour {
     private int price = 70;
-
     public int getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void equipArmour(Character character) {
+        character.isArmour = true;
+        character.setDefencePoint(character.getDefencePoint() + 1);
+        character.setSpeed(character.getSpeed() - 1);
     }
 
-
+    public void removeArmour(Character character) {
+        character.isArmour = false;
+        character.setDefencePoint(character.getDefencePoint() - 1);
+        character.setSpeed(character.getSpeed() + 1);
+    }
 }

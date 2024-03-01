@@ -1,3 +1,5 @@
 package Characters.Knights;
-public interface Knight {
+import Characters.Character;
+
+public abstract class Knight extends Character {
 }

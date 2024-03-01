@@ -1,6 +1,6 @@
 package Characters.Archers;
-import Characters.Character;
-public class Ranger implements Archer, Character {
+
+public class Ranger extends Archer{
     private int price = 115;
     private int attackPoint = 14;
     private int defencePoint = 5;
@@ -10,7 +10,6 @@ public class Ranger implements Archer, Character {
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
@@ -18,7 +17,6 @@ public class Ranger implements Archer, Character {
     public int getAttackPoint() {
         return attackPoint;
     }
-
     public void setAttackPoint(int attackPoint) {
         this.attackPoint = attackPoint;
     }
@@ -26,7 +24,6 @@ public class Ranger implements Archer, Character {
     public int getDefencePoint() {
         return defencePoint;
     }
-
     public void setDefencePoint(int defencePoint) {
         this.defencePoint = defencePoint;
     }
@@ -34,7 +31,6 @@ public class Ranger implements Archer, Character {
     public int getHealth() {
         return health;
     }
-
     public void setHealth(int health) {
         this.health = health;
     }
@@ -42,7 +38,6 @@ public class Ranger implements Archer, Character {
     public int getSpeed() {
         return speed;
     }
-
     public void setSpeed(int speed) {
         this.speed = speed;
     }

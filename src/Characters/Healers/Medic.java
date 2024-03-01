@@ -1,6 +1,6 @@
 package Characters.Healers;
 
-public class Medic {
+public class Medic extends Healer {
     private int price = 125;
     private int attackPoint = 12;
     private int defencePoint = 9;
@@ -10,7 +10,6 @@ public class Medic {
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
@@ -18,7 +17,6 @@ public class Medic {
     public int getAttackPoint() {
         return attackPoint;
     }
-
     public void setAttackPoint(int attackPoint) {
         this.attackPoint = attackPoint;
     }
@@ -26,7 +24,6 @@ public class Medic {
     public int getDefencePoint() {
         return defencePoint;
     }
-
     public void setDefencePoint(int defencePoint) {
         this.defencePoint = defencePoint;
     }
@@ -34,7 +31,6 @@ public class Medic {
     public int getHealth() {
         return health;
     }
-
     public void setHealth(int health) {
         this.health = health;
     }
@@ -42,7 +38,6 @@ public class Medic {
     public int getSpeed() {
         return speed;
     }
-
     public void setSpeed(int speed) {
         this.speed = speed;
     }

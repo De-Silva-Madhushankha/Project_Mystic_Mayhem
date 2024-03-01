@@ -1,7 +1,6 @@
 package Characters.Healers;
-import Characters.Character;
 
-public class Lightbringer implements Healer, Character {
+public class Lightbringer extends Healer {
     private int price = 260;
     private int attackPoint = 17;
     private int defencePoint = 15;
@@ -11,7 +10,6 @@ public class Lightbringer implements Healer, Character {
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
@@ -19,7 +17,6 @@ public class Lightbringer implements Healer, Character {
     public int getAttackPoint() {
         return attackPoint;
     }
-
     public void setAttackPoint(int attackPoint) {
         this.attackPoint = attackPoint;
     }
@@ -27,7 +24,6 @@ public class Lightbringer implements Healer, Character {
     public int getDefencePoint() {
         return defencePoint;
     }
-
     public void setDefencePoint(int defencePoint) {
         this.defencePoint = defencePoint;
     }
@@ -35,7 +31,6 @@ public class Lightbringer implements Healer, Character {
     public int getHealth() {
         return health;
     }
-
     public void setHealth(int health) {
         this.health = health;
     }
@@ -43,7 +38,6 @@ public class Lightbringer implements Healer, Character {
     public int getSpeed() {
         return speed;
     }
-
     public void setSpeed(int speed) {
         this.speed = speed;
     }
