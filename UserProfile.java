@@ -105,4 +105,19 @@ public class UserProfile {
 
     }
 
+    public void printUserDetails(){
+        String details = String.format("""
+                Name: %s
+                Username: %s
+                XP: %d
+                Gold coins: %d
+                Homeground: %d
+                Archer: 
+                Knight:
+                Mage:
+                Healer:
+                Mythical Creature:
+                """);
+    }
+
 }
