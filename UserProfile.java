@@ -47,14 +47,22 @@ public class UserProfile {
          this.armyClasses = new HashSet<>();
         for (Character c : army) {
             Class<?> unitClass = c.getClass();
-            if (!armyClasses.contains(unitClass)) {
+
+            if(armyClasses == null){
+                this.army.add(c);
+                armyClasses.add(unitClass);
+
+            }
+            else if (!armyClasses.contains(unitClass)) {
                 if(this.goldCoins >= c.price){
                     this.army.add(c);
                     armyClasses.add(unitClass);
                 }
                 else System.out.println("Not enough Gold Coins");
 
-            } else {
+            }
+            else
+            {
                 System.out.println("An instance of " + unitClass.getName() + " has already been added. Please Choose a different character from each category");
             }
         }
