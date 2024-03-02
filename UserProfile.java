@@ -105,6 +105,10 @@ public class UserProfile {
 
     }
 
+    public void buyEquipment(){
+
+    }
+
     public void printUserDetails(){
         String details = String.format("""
                 Name: %s
@@ -112,11 +116,11 @@ public class UserProfile {
                 XP: %d
                 Gold coins: %d
                 Homeground: %d
-                Archer: 
-                Knight:
-                Mage:
-                Healer:
-                Mythical Creature:
+                Archer: %s 
+                Knight: %S
+                Mage: %s
+                Healer: %s
+                Mythical Creature: %s
                 """);
     }
 
