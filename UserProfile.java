@@ -9,8 +9,9 @@ public class UserProfile {
     private int goldCoins;
     private int XP ;
     private static int  userCount ;
-    private static Set<String> userNames = new LinkedHashSeT<String>();
+    private static Set<String> userNames = new LinkedHashSet<String>();
     private List<Character> army;
+    private Set<Class<?>> armyClasses;
     private String homeground;
 
     UserProfile(String name, String userName){
@@ -38,13 +39,21 @@ public class UserProfile {
 
     }
 
+    public int getGoldCoins() {
+        return goldCoins;
+    }
+
     public void setArmy(List<Character> army) {
-        Set<Class<?>> armyClasses = new HashSet<>();
+         this.armyClasses = new HashSet<>();
         for (Character c : army) {
             Class<?> unitClass = c.getClass();
             if (!armyClasses.contains(unitClass)) {
-                this.army.add(c);
-                armyClasses.add(unitClass);
+                if(this.goldCoins >= c.price){
+                    this.army.add(c);
+                    armyClasses.add(unitClass);
+                }
+                else System.out.println("Not enough Gold Coins");
+
             } else {
                 System.out.println("An instance of " + unitClass.getName() + " has already been added. Please Choose a different character from each category");
             }
@@ -54,20 +63,46 @@ public class UserProfile {
         this.name = name;
     }
 
-    public void earnCoins(int coins) {
-        this.goldCoins += coins;
+    public void setHomeground(String homeground) {
+        this.homeground = homeground;
     }
 
-    public void combat(Player opponent) {
+    public void updateStatus(UserProfile opponent, boolean win) {
+        int opGoldCoins = opponent.getGoldCoins();
+        if(win){
+            this.goldCoins += opGoldCoins * 0.1;
+        }
+        else {
+            this.goldCoins -= this.goldCoins * 0.1;
+        }
+    }
+
+    public void combat(UserProfile opponent) {
         // Combat logic here
     }
 
     public void buyCharacter(Character newCharacter) {
-        // Buy character logic here
+        if( this.goldCoins >= newCharacter.price){
+            if(!armyClasses.contains(newCharacter.getClass()) ){
+                army.add(newCharacter);
+                armyClasses.add(newCharacter.getClass());
+                this.goldCoins -= newCharacter.price;
+            }
+            else{
+                System.out.println("You already have a character from that category. Please choose a character from a different category.");
+            }
+
+        }
+        else{
+            System.out.println("Not enough gold coins to buy the character");
+        }
     }
 
-    public void sellCharacter(String category) {
-        // Sell character logic here
+    public void sellCharacter(Character oldCharacter) {
+        this.goldCoins += (oldCharacter.price * 0.9);
+        armyClasses.remove(oldCharacter.getClass());
+        army.remove(oldCharacter);
+
     }
 
 }
