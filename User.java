@@ -6,6 +6,9 @@ public class User {
     private String userName;
     private int userID;
 
+    private int coins = 500;
+    private int XP;
+
     private int userCount;
 
     User(){
@@ -25,4 +28,11 @@ public class User {
         this.name = name;
     }
 
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+
+    public void setXP(int XP) {
+        this.XP = XP;
+    }
 }
