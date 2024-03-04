@@ -2,18 +2,20 @@ package Equipment.Armour;
 import Characters.Character;
 
 public class Regalia extends Armour {
-    private int price = 105;
+    private final int price = 105;
     public int getPrice() {
         return price;
     }
 
-    public void equipArmour(Character character) {
+    public void equip(Character character) {
         character.isArmour = true;
         character.setDefencePoint(character.getDefencePoint()+1);
+        character.setPrice(character.getPrice() + 0.2*price);
     }
 
-    public void removeArmour(Character character) {
+    public void remove(Character character) {
         character.isArmour = false;
         character.setDefencePoint(character.getDefencePoint()-1);
+        character.setPrice(character.getPrice() - 0.2*price);
     }
 }

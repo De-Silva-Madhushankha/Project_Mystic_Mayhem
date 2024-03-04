@@ -1,24 +1,81 @@
 package Characters.Knights;
+import Characters.Character;
+import java.util.*;
 
 public class Squire extends Knight {
-    private int price = 85;
-    private int attackPoint = 8;
-    private int defencePoint = 9;
-    private int health = 7;
-    private int speed = 8;
+    private double price = 85;
+    private double attackPoint = 8;
+    private double defencePoint = 9;
+    private double health = 7;
+    private double speed = 8;
+    private String characterType = "Marshlander";
 
-    public int getPrice() {return price;}
-    public void setPrice(int price) {this.price = price;}
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-    public int getAttackPoint() {return attackPoint;}
-    public void setAttackPoint(int attackPoint) {this.attackPoint = attackPoint;}
+    public double getAttackPoint() {
+        return attackPoint;
+    }
+    public void setAttackPoint(double attackPoint) {
+        this.attackPoint = attackPoint;
+    }
 
-    public int getDefencePoint() {return defencePoint;}
-    public void setDefencePoint(int defencePoint) {this.defencePoint = defencePoint;}
+    public double getDefencePoint() {
+        return defencePoint;
+    }
+    public void setDefencePoint(double defencePoint) {
+        this.defencePoint = defencePoint;
+    }
 
-    public int getHealth() {return health;}
-    public void setHealth(int health) {this.health = health;}
+    public double getHealth() {
+        return health;
+    }
+    public void setHealth(double health) {
+        this.health = health;
+    }
 
-    public int getSpeed() {return speed;}
-    public void setSpeed(int speed) {this.speed = speed;}
+    public double getSpeed() {
+        return speed;
+    }
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
+    public void setHomeGround(String homeGround) {
+    }
+
+    public void attack(List<Character> opponentArmy) {
+        PriorityQueue<Character> defenceOrder = new PriorityQueue<>(Comparator.comparing(Character::getDefencePriority));
+        for(Character c: opponentArmy){
+            defenceOrder.add(c);
+        }
+
+        Character opponent = null;
+        double minDefencePoint = 50; //temp Value
+
+        for(Character c : defenceOrder) {
+            if(minDefencePoint >= c.getDefencePoint() && c.getHealth() > 0) {
+                opponent = c;
+                minDefencePoint = c.getDefencePoint();
+            }
+        }
+
+        if (opponent == null){
+            System.out.println("All characters are dead!");
+        } else {
+            double damage = (0.5*attackPoint) - (0.1*opponent.getDefencePoint());
+            opponent.setHealth(opponent.getHealth()-damage);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Character[Name: "+ this.getClass().getSimpleName() +",Type: "+ this.characterType +
+                ",Price: "+ this.price + ",Health: "+ this.health +",Armour: "+ this.isArmour +
+                ",Artefacts: "+ this.isArtefacts +" ]";
+    }
 }
