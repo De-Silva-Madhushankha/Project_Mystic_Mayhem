@@ -31,8 +31,4 @@ public class Main {
         UserProfile user = new UserProfile(name,username);
     }
 
-
-
-
-}
 }
