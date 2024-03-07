@@ -10,8 +10,11 @@ public class UserProfile {
     private int goldCoins;
     private int XP ;
     private static int  userCount ;
-    private List<Character> army = new arrayList();
-    private Set<String> armyTypes = new HashSet<>();
+    private List<Character> guild = new arrayList();
+//    private Set<String> armyTypes = new HashSet<>();
+
+    HashMap<String, String> armyDetails = new HashMap<>();
+
     private String homeground;
 
 
@@ -128,12 +131,12 @@ public class UserProfile {
         String heroType = hero.getClass().getSuperClass().getSimpleClass().getSimpleName();
         assert hero != null;
         if( this.getGoldCoins() >= hero.getPrice()){
-            if(armyTypes.contains(heroType)){
+            if(armyDetails.containsKey(heroType)){
                 return 0;
             }else{
                 this.goldCoins -= hero.getPrice();
-                army.add(hero);
-                armyTypes.add(heroType);
+                armyDetails.put(heroType,characterName);
+                guild.add(hero);
                 return 1;
             }
         }else {
@@ -169,7 +172,7 @@ public class UserProfile {
             String wannaSell = scanner.nextLine();
 
             if(wannaSell.compareToIgnoreCase("y")){
-                System.out.println(String.format("Your Army :- %s %s %s %s %s",army[0],army[1],army[2],army[3],army[4]));
+                System.out.println(String.format("Your Army :- %s %s %s %s %s",army.get("Archer"), army.get("Healer"), army.get("Knight"), army.get("Mage"), army.get("MythicalCreature")));
                 System.out.print("Select a hero to sell : ");
                 String heroToBeSell = scanner.nextLine();
                 Character  sellHero = trainHero(sellHero);
@@ -249,24 +252,24 @@ public class UserProfile {
 
         }
 
-
-
-
     }
 
-//    public void printUserDetails(){
-//        String details = String.format("Name: %s\n" +
-//                                       "Username: %s\n" +
-//                                       "XP: %d\n" +
-//                                       "Gold coins: %d\n" +
-//                                       "Homeground: %d\n" +
-//                                       "Archer: %s\n" +
-//                                       "Knight: %S\n" +
-//                                       "Mage: %s\n" +
-//                                       "Healer: %s\n" +
-//                                       "Mythical Creature: %s\n");
+    public void printPlayerStatistics() {
 
+        //Hero Name + Equipments is yet to add
 
+            String details = String.format("Name: %s\n" +
+                    "Username: %s\n" +
+                    "XP: %d\n" +
+                    "Gold coins: %d\n" +
+                    "Homeground: %d\n" +
+                    "Archer: %s\n" +
+                    "Knight: %S\n" +
+                    "Mage: %s\n" +
+                    "Healer: %s\n" +
+                    "Mythical Creature: %s\n", name, userName, XP, goldCoins, homeground, );
+
+    }
 //    @Override
 //    public String toString() {
 //        return "User [Name:"+name+" ,Username:"+userName+" ,XP:"+XP+" ,Gold Coin:"+goldCoins+" ,Home ground:"+homeground+" ]";

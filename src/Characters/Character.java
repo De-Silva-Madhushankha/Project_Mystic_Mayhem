@@ -9,8 +9,13 @@ public abstract class Character {
     private double speed;
     private String characterType;
 
+    public String equipment = "";
+
     public boolean isArmour = false;
     public boolean isArtefacts = false;
+
+
+    public String heroDetails = "";
 
     public abstract double getPrice();
     public abstract void setPrice(double price);
