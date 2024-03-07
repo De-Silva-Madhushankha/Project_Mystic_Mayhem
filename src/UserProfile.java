@@ -194,7 +194,64 @@ public class UserProfile {
 
     }
 
-    public void buyEquipment(Equipment newEquipment,Character character){
+    public void buyEquipment(String characterName, String equipment){
+
+        Character hero = trainHero(characterName);
+        Equipment equipment = null;
+        String equipmentType = null;
+
+        switch(equipment){
+            case "Chainmail":
+                equipment = new Chainmail();
+                equipmentType = "Armour";
+                break;
+            case "Fleece":
+                equipment = new Fleece();
+                equipmentType = "Armour";
+                break;
+            case "Regalia":
+                equipment = new Regalia();
+                equipmentType = "Armour";
+                break;
+            case "Amulet":
+                equipment = new Amulet();
+                equipmentType = "Artefacts";
+                break;
+            case "Crystal":
+                equipment = new Crystal();
+                equipmentType = "Artefacts";
+                break;
+            case "Excalibur":
+                equipment = new Excalibur();
+                equipmentType = "Artefacts";
+                break;
+        }
+
+        if(this.goldCoins >= equipment.getPrice()){
+
+            if(equipmentType == "Armour" && hero.isArmour()){
+                equipment.removeFrom(hero);
+                equipment.equipTo(hero);
+            }
+            else {
+                equipment.equipTo(hero);
+            }
+
+            if(equipmentType == "Artefact" && hero.isArtefact()){
+                equipment.removeFrom(hero);
+                equipment.equipTo(hero);
+            }
+            else {
+                equipment.equipTo(hero);
+            }
+
+            this.goldCoins -= equipment.getPrice();
+
+        }
+
+
+
+
     }
 
 //    public void printUserDetails(){
