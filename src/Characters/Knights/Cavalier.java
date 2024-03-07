@@ -47,13 +47,25 @@ public class Cavalier extends Knight{
     }
 
     public void setHomeGround(String homeGround) {
+        switch (homeGround) {
+            case "Hillcrest":
+                this.attackPoint++;
+                this.defencePoint++;
+                break;
+            case "Marshland":
+                break;
+            case "Desert":
+                break;
+            case "Arcane":
+                this.defencePoint--;
+                this.speed--;
+                break;
+        }
     }
 
     public void attack(List<Character> opponentArmy) {
         PriorityQueue<Character> defenceOrder = new PriorityQueue<>(Comparator.comparing(Character::getDefencePriority));
-        for(Character c: opponentArmy){
-            defenceOrder.add(c);
-        }
+        defenceOrder.addAll(opponentArmy);
 
         Character opponent = null;
         double minDefencePoint = 50; //temp Value

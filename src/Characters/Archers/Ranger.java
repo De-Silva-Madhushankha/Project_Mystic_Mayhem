@@ -8,7 +8,7 @@ public class Ranger extends Archer{
     private double defencePoint = 5;
     private double health = 8;
     private double speed = 10;
-    private String characterType = "Highlander";
+    private final String characterType = "Highlander";
 
     public double getPrice() {
         return price;
@@ -46,13 +46,25 @@ public class Ranger extends Archer{
     }
 
     public void setHomeGround(String homeGround) {
+        switch (homeGround) {
+            case "Hillcrest":
+                this.attackPoint++;
+                this.defencePoint++;
+                break;
+            case "Marshland":
+                break;
+            case "Desert":
+                break;
+            case "Arcane":
+                this.defencePoint--;
+                this.speed--;
+                break;
+        }
     }
 
     public void attack(List<Character> opponentArmy) {
         PriorityQueue<Character> defenceOrder = new PriorityQueue<>(Comparator.comparing(Character::getDefencePriority));
-        for(Character c: opponentArmy){
-            defenceOrder.add(c);
-        }
+        defenceOrder.addAll(opponentArmy);
 
         Character opponent = null;
         double minDefencePoint = 50; //temp Value
@@ -67,7 +79,7 @@ public class Ranger extends Archer{
         if (opponent == null){
             System.out.println("All characters are dead!");
         } else {
-            double damage = (0.5*attackPoint) - (0.1*opponent.getDefencePoint());
+            double damage = (0.5*this.attackPoint) - (0.1*opponent.getDefencePoint());
             opponent.setHealth(opponent.getHealth()-damage);
         }
     }

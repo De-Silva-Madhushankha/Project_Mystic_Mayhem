@@ -23,9 +23,7 @@ public abstract class Character {
     public abstract double getSpeed();
     public abstract void setSpeed(double speed);
     public abstract void setHomeGround(String homeGround);
-
     public abstract String toString();
-
     public abstract void attack(List<Character> opponentArmy);
 
     public static int getDefencePriority(Character c){
@@ -44,7 +42,6 @@ public abstract class Character {
         }
         return 0;
     }
-
     public static int getAttackPriority(Character c){
         String characterType = c.getClass().getSuperclass().getSimpleName();
         switch (characterType) {

@@ -47,13 +47,23 @@ public class Saint extends Healer{
     }
 
     public void setHomeGround(String homeGround) {
+        switch (homeGround) {
+            case "Hillcrest":
+                break;
+            case "Marshland":
+                this.speed--;
+                break;
+            case "Desert":
+                break;
+            case "Arcane":
+                this.attackPoint = this.attackPoint+2;
+                break;
+        }
     }
 
     public void attack(List<Character> opponentArmy) {
         PriorityQueue<Character> defenceOrder = new PriorityQueue<>(Comparator.comparing(Character::getDefencePriority));
-        for(Character c: opponentArmy){
-            defenceOrder.add(c);
-        }
+        defenceOrder.addAll(opponentArmy);
 
         Character opponent = null;
         double minDefencePoint = 50; //temp Value

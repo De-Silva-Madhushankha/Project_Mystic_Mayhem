@@ -46,13 +46,24 @@ public class Lightbringer extends Healer {
     }
 
     public void setHomeGround(String homeGround) {
+        switch (homeGround) {
+            case "Hillcrest":
+                this.speed--;
+                break;
+            case "Marshland":
+                this.attackPoint--;
+                break;
+            case "Desert":
+                this.attackPoint++;
+                break;
+            case "Arcane":
+                break;
+        }
     }
 
     public void attack(List<Character> opponentArmy) {
         PriorityQueue<Character> defenceOrder = new PriorityQueue<>(Comparator.comparing(Character::getDefencePriority));
-        for(Character c: opponentArmy){
-            defenceOrder.add(c);
-        }
+        defenceOrder.addAll(opponentArmy);
 
         Character opponent = null;
         double minDefencePoint = 50; //temp Value
