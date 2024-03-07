@@ -3,6 +3,6 @@ import Characters.Character;
 
 public interface Equipment {
     public int getPrice();
-    public abstract void equip(Character character);
-    public abstract void remove(Character character);
+    public abstract void equipTo(Character character);
+    public abstract void removeFrom(Character character);
 }

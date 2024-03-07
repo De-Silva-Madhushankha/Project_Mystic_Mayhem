@@ -64,7 +64,7 @@ public class Hydra extends MythicalCreature {
         }
     }
 
-    public void attack(List<Character> opponentArmy) {
+    public void attack(List<Character> opponentArmy,List<Character> ownArmy) {
         PriorityQueue<Character> defenceOrder = new PriorityQueue<>(Comparator.comparing(Character::getDefencePriority));
         defenceOrder.addAll(opponentArmy);
 

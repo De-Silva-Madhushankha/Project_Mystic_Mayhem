@@ -62,7 +62,7 @@ public class Ranger extends Archer{
         }
     }
 
-    public void attack(List<Character> opponentArmy) {
+    public void attack(List<Character> opponentArmy,List<Character> ownArmy) {
         PriorityQueue<Character> defenceOrder = new PriorityQueue<>(Comparator.comparing(Character::getDefencePriority));
         defenceOrder.addAll(opponentArmy);
 
@@ -77,6 +77,7 @@ public class Ranger extends Archer{
         }
 
         if (opponent == null){
+            //
             System.out.println("All characters are dead!");
         } else {
             double damage = (0.5*this.attackPoint) - (0.1*opponent.getDefencePoint());

@@ -7,7 +7,7 @@ public class Fleece extends Armour {
         return price;
     }
 
-    public void equip(Character character) {
+    public void equipTo(Character character) {
         character.isArmour = true;
         character.setDefencePoint(character.getDefencePoint()+2);
         character.setHealth(character.getHealth()+1);
@@ -15,7 +15,7 @@ public class Fleece extends Armour {
         character.setPrice(character.getPrice() + 0.2*price);
     }
 
-    public void remove(Character character) {
+    public void removeFrom(Character character) {
         character.isArmour = false;
         character.setDefencePoint(character.getDefencePoint()-2);
         character.setHealth(character.getHealth()-1);

@@ -7,13 +7,13 @@ public class Excalibur extends Artefact {
         return price;
     }
 
-    public void equip(Character character) {
+    public void equipTo(Character character) {
         character.isArmour = true;
         character.setAttackPoint(character.getAttackPoint()+2);
         character.setPrice(character.getPrice() + 0.2*price);
     }
 
-    public void remove(Character character) {
+    public void removeFrom(Character character) {
         character.isArmour = false;
         character.setAttackPoint(character.getAttackPoint()-2);
         character.setPrice(character.getPrice() - 0.2*price);
