@@ -1,6 +1,10 @@
 package Characters.Archers;
+
 import Characters.Character;
-import java.util.*;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 public class Sunfire extends Archer{
     private double price = 160;

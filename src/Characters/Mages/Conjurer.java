@@ -1,6 +1,10 @@
 package Characters.Mages;
+
 import Characters.Character;
-import java.util.*;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 public class Conjurer extends Mage {
     private double price = 195;

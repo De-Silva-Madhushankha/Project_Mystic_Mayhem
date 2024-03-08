@@ -9,6 +9,7 @@ public class Crystal extends Artefact {
 
     public void equipTo(Character character) {
         character.isArmour = true;
+        character.artefactType = "Crystal";
         character.setAttackPoint(character.getAttackPoint()+2);
         character.setDefencePoint(character.getDefencePoint()+1);
         character.setHealth(character.getHealth()-1);
@@ -18,6 +19,7 @@ public class Crystal extends Artefact {
 
     public void removeFrom(Character character) {
         character.isArmour = false;
+        character.artefactType = null;
         character.setAttackPoint(character.getAttackPoint()-2);
         character.setDefencePoint(character.getDefencePoint()-1);
         character.setHealth(character.getHealth()+1);

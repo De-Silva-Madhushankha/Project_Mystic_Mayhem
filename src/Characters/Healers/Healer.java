@@ -1,6 +1,8 @@
 package Characters.Healers;
+
 import Characters.Character;
-import java.util.*;
+
+import java.util.List;
 
 public abstract class Healer extends Character {
     protected void heal(List<Character> ownArmy){

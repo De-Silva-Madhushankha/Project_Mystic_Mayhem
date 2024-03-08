@@ -9,12 +9,14 @@ public class Regalia extends Armour {
 
     public void equipTo(Character character) {
         character.isArmour = true;
+        character.armourType = "Ragalia";
         character.setDefencePoint(character.getDefencePoint()+1);
         character.setPrice(character.getPrice() + 0.2*price);
     }
 
     public void removeFrom(Character character) {
         character.isArmour = false;
+        character.armourType = null;
         character.setDefencePoint(character.getDefencePoint()-1);
         character.setPrice(character.getPrice() - 0.2*price);
     }

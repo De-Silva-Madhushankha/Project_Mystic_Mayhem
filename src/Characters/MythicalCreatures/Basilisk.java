@@ -1,6 +1,10 @@
 package Characters.MythicalCreatures;
+
 import Characters.Character;
-import java.util.*;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 public class Basilisk extends MythicalCreature {
     private double price = 165;

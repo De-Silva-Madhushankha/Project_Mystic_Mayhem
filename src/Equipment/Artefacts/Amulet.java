@@ -9,6 +9,7 @@ public class Amulet extends Artefact {
 
     public void equipTo(Character character) {
         character.isArmour = true;
+        character.artefactType = "Amulet";
         character.setAttackPoint(character.getAttackPoint()+1);
         character.setDefencePoint(character.getDefencePoint()-1);
         character.setHealth(character.getHealth()+1);
@@ -18,6 +19,7 @@ public class Amulet extends Artefact {
 
     public void removeFrom(Character character) {
         character.isArmour = false;
+        character.artefactType = null;
         character.setAttackPoint(character.getAttackPoint()-1);
         character.setDefencePoint(character.getDefencePoint()+1);
         character.setHealth(character.getHealth()-1);

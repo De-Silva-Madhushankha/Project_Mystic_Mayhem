@@ -9,6 +9,7 @@ public class Fleece extends Armour {
 
     public void equipTo(Character character) {
         character.isArmour = true;
+        character.armourType = "Fleece";
         character.setDefencePoint(character.getDefencePoint()+2);
         character.setHealth(character.getHealth()+1);
         character.setSpeed(character.getSpeed()-1);
@@ -17,6 +18,7 @@ public class Fleece extends Armour {
 
     public void removeFrom(Character character) {
         character.isArmour = false;
+        character.armourType = null;
         character.setDefencePoint(character.getDefencePoint()-2);
         character.setHealth(character.getHealth()-1);
         character.setSpeed(character.getSpeed()+1);

@@ -9,8 +9,10 @@ public abstract class Character {
     private double speed;
     private String characterType;
 
+    public String armourType;
+    public String artefactType;
     public boolean isArmour = false;
-    public boolean isArtefacts = false;
+    public boolean isArtefact = false;
 
     public abstract double getPrice();
     public abstract void setPrice(double price);
