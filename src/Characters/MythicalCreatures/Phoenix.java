@@ -7,13 +7,15 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class Phoenix extends MythicalCreature {
+
+    private double defaultHealth = 17;
     private double price = 275;
     private double attackPoint = 17;
     private double defencePoint = 13;
     private double health = 17;
     private double speed = 19;
 
-    private String characterType = "Sunchildren";
+    public String characterType = "Sunchildren";
 
     public double getPrice() {
         return price;
@@ -50,7 +52,11 @@ public class Phoenix extends MythicalCreature {
         this.speed = speed;
     }
 
-    public void setHomeGround(String homeGround) {
+    public String getCharacterType() {
+        return characterType;
+    }
+
+    public void setBattleGround(String homeGround) {
         switch (homeGround) {
             case "Hillcrest":
                 this.speed--;
@@ -66,32 +72,58 @@ public class Phoenix extends MythicalCreature {
         }
     }
 
+    public void resetBattleGround(String homeGround) {
+        switch (homeGround) {
+            case "Hillcrest":
+                this.speed++;
+                break;
+            case "Marshland":
+                this.attackPoint++;
+                break;
+            case "Desert":
+                this.attackPoint--;
+                break;
+            case "Arcane":
+                break;
+        }
+    }
+
     public void attack(List<Character> opponentArmy,List<Character> ownArmy) {
-        PriorityQueue<Character> defenceOrder = new PriorityQueue<>(Comparator.comparing(Character::getDefencePriority));
-        defenceOrder.addAll(opponentArmy);
+        opponentArmy = getDefencePriority(opponentArmy);
 
         Character opponent = null;
         double minDefencePoint = 50; //temp Value
 
-        for(Character c : defenceOrder) {
+        for(Character c : opponentArmy) {
             if(minDefencePoint >= c.getDefencePoint() && c.getHealth() > 0) {
                 opponent = c;
                 minDefencePoint = c.getDefencePoint();
             }
         }
 
+        assert opponent != null;
+        System.out.printf("%s%n",opponent.getClass().getSimpleName());
+
         if (opponent == null){
             System.out.println("All characters are dead!");
         } else {
-            double damage = (0.5*attackPoint) - (0.1*opponent.getDefencePoint());
+            double damage = (0.5*this.attackPoint) - (0.1*opponent.getDefencePoint());
             opponent.setHealth(opponent.getHealth()-damage);
+            if(opponent.getHealth() <= 0){
+                System.out.println("->"+opponent.getClass().getSimpleName() + "'s health: 0");
+                System.out.printf("->"+opponent.getClass().getSimpleName() + " died!%n");
+            }else{
+                System.out.printf("->"+opponent.getClass().getSimpleName()+"'s health: %.1f%n",opponent.getHealth());
+            }
         }
+    }
+
+    public void setDefaultHealth(){
+        this.health = defaultHealth;
     }
 
     @Override
     public String toString() {
-        return "Character[Name: "+ this.getClass().getSimpleName() +",Type: "+ this.characterType +
-                ",Price: "+ this.price + ",Health: "+ this.health +",Armour: "+ this.isArmour +
-                ",Artefacts: "+ this.isArtefacts +" ]";
+        return this.getClass().getSimpleName() +" + "+ this.armourType +" + "+ this.artefactType;
     }
 }

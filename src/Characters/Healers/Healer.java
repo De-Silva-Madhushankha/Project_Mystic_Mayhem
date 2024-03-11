@@ -19,5 +19,7 @@ public abstract class Healer extends Character {
         }
         double healthIncrement = 0.1*myhealer.getAttackPoint();
         characterToHeal.setHealth(characterToHeal.getHealth()+healthIncrement);
+
+        System.out.println(myhealer.getClass().getSimpleName()+" heals " + characterToHeal.getClass().getSimpleName());
     };
 }
